@@ -1,28 +1,53 @@
 {
-  "name": "vue-silentbox",
-  "version": "0.1.2",
-  "description": "A simple lightbox inspired Vue.js component.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
+  "_from": "git+https://github.com/lisandromc/silentbox.git",
+  "_id": "vue-silentbox@0.1.2",
+  "_inBundle": false,
+  "_location": "/vue-silentbox",
+  "_phantomChildren": {},
+  "_requested": {
     "type": "git",
-    "url": "git+https://github.com/silencesys/silentbox.git"
+    "raw": "vue-silentbox@git+https://github.com/lisandromc/silentbox.git",
+    "name": "vue-silentbox",
+    "escapedName": "vue-silentbox",
+    "rawSpec": "git+https://github.com/lisandromc/silentbox.git",
+    "saveSpec": "git+https://github.com/lisandromc/silentbox.git",
+    "fetchSpec": "https://github.com/lisandromc/silentbox.git",
+    "gitCommittish": null
   },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "git+https://github.com/lisandromc/silentbox.git#1ff4e00f4fce1a5da89e1de7fbcfe0b70d8c9255",
+  "_spec": "vue-silentbox@git+https://github.com/lisandromc/silentbox.git",
+  "_where": "/var/www/blink/marketplace",
+  "author": {
+    "name": "Martin Rocek"
+  },
+  "bugs": {
+    "url": "https://github.com/silencesys/silentbox/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "vue-touch": "^2.0.0-beta.4"
+  },
+  "deprecated": false,
+  "description": "A simple lightbox inspired Vue.js component.",
+  "homepage": "https://github.com/silencesys/silentbox#readme",
   "keywords": [
     "Vue",
     "Silentbox",
     "Lightbox",
     "Fancybox"
   ],
-  "author": "Martin Rocek",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/silencesys/silentbox/issues"
+  "main": "index.js",
+  "name": "vue-silentbox",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/silencesys/silentbox.git"
   },
-  "homepage": "https://github.com/silencesys/silentbox#readme",
-  "dependencies": {
-    "vue-touch": "^2.0.0-beta.4"
-  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.2"
 }
