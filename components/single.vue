@@ -1,5 +1,8 @@
 <template>
-    <span class="silentbox-single" :src="src" @click="openSilentBoxOverlay">
+    <span class="silentbox-single" 
+        :src="src" 
+        @click="openSilentBoxOverlay"
+    >
         <slot></slot>
         <silentbox-overlay></silentbox-overlay>
     </span>
@@ -14,7 +17,13 @@
             // Media source, it could be an image or a youtube video.
             'src': {
                 type: String,
-                required: true
+                required: true,
+                default() {
+                    return '';
+                }
+            },
+            'srcInfo': {
+                type: Object
             },
             // Should be video autoplayed.
             'autoplay': {
@@ -34,7 +43,7 @@
                     total: 0,
                     position: 0
                 }
-            }
+            };
         },
         components: {
             'silentbox-overlay': overlay

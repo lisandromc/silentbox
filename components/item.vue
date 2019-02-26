@@ -13,6 +13,9 @@
                 type: String,
                 required: true
             },
+            'srcInfo': {
+                type: Object
+            },
             // True if video should be autoplayed.
             'autoplay': {
                 type: Boolean,
@@ -52,10 +55,10 @@
              * @return {void}
              */
             openSilentBoxOverlay() {
-                let itemIndex = this.$parent.items.list.findIndex(item => item.src === this.src);
-
+                let itemIndex = this.$parent.items.list.findIndex(item => { return item.src === this.src; });
                 this.$parent.$emit('openSilentboxOverlay', {
                     url: this.embedUrl,
+                    info: this.srcInfo,
                     position: itemIndex,
                     autoplay: this.autoplay,
                     description: this.description
@@ -65,8 +68,10 @@
         created() {
             // Push items to the parent component.
             // TODO: do it in parent component
+            console.debug("Pushing item", this.src, this.$parent);
             this.$parent.items.list.push({
                 src: this.src,
+                srcInfo: this.srcInfo,
                 autoplay: this.autoplay,
                 desc: this.description,
                 position: this.position

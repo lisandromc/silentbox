@@ -14,6 +14,7 @@
             return {
                 overlayVisibility: false,
                 embedUrl: '',
+                srcInfo: null,
                 items: {
                     total: 0,
                     position: 0,
@@ -57,13 +58,11 @@
                     this.items.position = 0;
                 }
 
-                this.embedUrl = this.items.list[this.items.position].src;
-
-                this.autoplay = (this.items.list[this.items.position].autoplay !== undefined)
-                    ? this.items.list[this.items.position].autoplay : false;
-
-                this.description = (this.items.list[this.items.position].desc !== undefined)
-                    ? this.items.list[this.items.position].desc : false;
+                let item = this.items.list[this.items.position];
+                this.embedUrl = item.src;
+                this.srcInfo = item.srcInfo;
+                this.autoplay = (item.autoplay !== undefined) ? item.autoplay : false;
+                this.description = (item.desc !== undefined) ? item.desc : false;
             },
             /**
              * Move to previous item in a group.
@@ -77,21 +76,20 @@
                     this.items.position = this.items.total - 1;
                 }
 
-                this.embedUrl = this.items.list[this.items.position].src;
-
-                this.autoplay = (this.items.list[this.items.position].autoplay !== undefined)
-                    ? this.items.list[this.items.position] : false;
-
-                this.description = (this.items.list[this.items.position].desc !== undefined)
-                    ? this.items.list[this.items.position].desc : false;
+                let item = this.items.list[this.items.position];
+                this.embedUrl = item.src;
+                this.srcInfo = item.srcInfo;
+                this.autoplay = (item.autoplay !== undefined) ? item.autoplay : false;
+                this.description = (item.desc !== undefined) ? item.desc : false;
             },
             /**
-             * Set item that shuld be displayed.
+             * Set item that should be displayed.
              *
              * @return {void}
              */
             setOpened(item) {
                 this.embedUrl = item.url;
+                this.srcInfo = item.info;
                 this.items.position = item.position;
                 this.overlayVisibility = true;
                 this.autoplay = item.autoplay;

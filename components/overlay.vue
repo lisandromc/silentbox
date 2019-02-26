@@ -39,7 +39,6 @@
                 if (this.$parent.overlayVisibility !== undefined && this.$parent.overlayVisibility !== false) {
                     return true;
                 }
-
                 return false;
             }
         },
@@ -55,25 +54,36 @@
                 this.$parent.$emit('closeSilentboxOverlay');
             },
             handleUrl(url) {
-                if (url.includes('youtube.com')) {
-                    this.video = true;
-
-                    let videoIdPosition  = url.indexOf('v=') + 2;
-                    let videoId = url.substring(videoIdPosition);
-
-                    let videoUrl = 'https://www.youtube.com/embed/' + videoId;
-
-                    if (this.$parent.autoplay) {
-                        videoUrl += '?autoplay=1';
-                    }
-
-                    return videoUrl;
-                } else {
-                    this.video = false;
-
-                    return url;
+                let isVideo = false;
+                let srcInfo = this.$parent.srcInfo;
+                if (srcInfo) {
+                    isVideo = (srcInfo.mediaType === 'video' && !! srcInfo.videoId);
                 }
-            }
+                else if (url && url.includes('youtube.com')) {
+                    isVideo = true;
+                }
+
+                console.debug("Is video?", isVideo);
+                this.video = isVideo;
+                return isVideo ? this.makeVideoEmbedUrl(srcInfo, this.$parent.autoplay) : url;
+            },
+            makeVideoEmbedUrl(info, autoplay = false) {
+                if (! info) return null;
+                
+                switch (info.source) {
+                    case 'youtube': 
+                        return `https://www.youtube.com/embed/${info.videoId}?autoplay=${autoplay ? 1 : 0}`;
+
+                    case 'vimeo': 
+                        return `https://player.vimeo.com/video/${info.videoId}?autoplay=${autoplay ? 1 : 0}`;
+
+                    case 'vzaar': 
+                        return `http://view.vzaar.com/${info.videoId}/player`;
+
+                    default:
+                        return null;
+                }
+            },
         },
         beforeUpdate() {
             let body = document.body;
@@ -87,7 +97,7 @@
             if (! this.isVisible && body.classList.contains('silentbox-is-opened')) {
                 return body.classList.remove('silentbox-is-opened')
             }
-        }
+        },
     }
 </script>
 
