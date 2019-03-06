@@ -68,7 +68,6 @@
         created() {
             // Push items to the parent component.
             // TODO: do it in parent component
-            console.debug("Pushing item", this.src, this.$parent);
             this.$parent.items.list.push({
                 src: this.src,
                 srcInfo: this.srcInfo,

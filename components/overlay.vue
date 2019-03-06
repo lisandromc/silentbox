@@ -63,7 +63,6 @@
                     isVideo = true;
                 }
 
-                console.debug("Is video?", isVideo);
                 this.video = isVideo;
                 return isVideo ? this.makeVideoEmbedUrl(srcInfo, this.$parent.autoplay) : url;
             },
