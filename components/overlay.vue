@@ -118,7 +118,7 @@ $bg: #000;
 
 #silentbox-overlay {
     display: block;
-    height: 100vh;
+    height: 100%;
     left: 0;
     position: fixed;
     top: 0;
