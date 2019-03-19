@@ -5,8 +5,8 @@
         <div id="silentbox-overlay__content" @click.stop="closeSilentboxOverlay">
             <div id="silentbox-overlay__embed">
                 <div id="silentbox-overlay__container">
-                    <iframe width="100%" height="100%" v-if="video" :src="getEmbedUrl" frameborder="0" allowfullscreen></iframe>
-                    <img width="auto" height="auto" :src="getEmbedUrl" v-if="! video">
+                    <iframe ref="mediaElement" width="100%" height="100%" v-if="video" :src="getEmbedUrl" frameborder="0" allowfullscreen></iframe>
+                    <img ref="mediaElement" width="auto" height="auto" :src="getEmbedUrl" v-if="! video">
                 </div>
                 <p id="silentbox-overlay__description" v-if="this.$parent.description">{{ this.$parent.description }}</p>
             </div>
@@ -89,6 +89,9 @@
 
             // add class only if overlay should be visible
             if (this.isVisible && ! body.classList.contains('silentbox-is-opened')) {
+                this.$nextTick(() => {
+                    this.$refs.mediaElement.scrollIntoView({ behavior: 'smooth' });
+                });
                 return body.classList.add('silentbox-is-opened');
             }
 
