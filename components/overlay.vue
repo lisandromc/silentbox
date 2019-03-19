@@ -90,7 +90,7 @@
             // add class only if overlay should be visible
             if (this.isVisible && ! body.classList.contains('silentbox-is-opened')) {
                 this.$nextTick(() => {
-                    this.$refs.mediaElement.scrollIntoView({ behavior: 'smooth' });
+                    this.$refs.mediaElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 });
                 return body.classList.add('silentbox-is-opened');
             }
